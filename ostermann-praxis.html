@@ -1,0 +1,1196 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Praxis Dr. med. Peter Ostermann – Facharzt für Allgemeinmedizin, Overath</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --clr-primary: #8B2323;
+    --clr-primary-light: #a83030;
+    --clr-primary-dark: #6b1a1a;
+    --clr-dark: #1a1a2e;
+    --clr-dark-2: #16213e;
+    --clr-bg: #fafafa;
+    --clr-bg-2: #f4ede3;
+    --clr-accent: #f4ede3;
+    --clr-text: #2c2c2c;
+    --clr-text-muted: #666;
+    --clr-border: #e8e0d5;
+    --clr-white: #ffffff;
+    --radius: 12px;
+    --radius-lg: 20px;
+    --shadow: 0 4px 24px rgba(0,0,0,0.08);
+    --shadow-lg: 0 12px 48px rgba(0,0,0,0.15);
+    --font-sans: 'Inter', system-ui, sans-serif;
+    --font-serif: 'Lora', Georgia, serif;
+    --transition: 0.3s ease;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: var(--font-sans);
+    color: var(--clr-text);
+    background: var(--clr-bg);
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+
+  /* ALERT BANNER */
+  .alert-banner {
+    background: linear-gradient(135deg, var(--clr-primary), var(--clr-primary-dark));
+    color: #fff;
+    text-align: center;
+    padding: 12px 48px;
+    font-size: 0.875rem;
+    position: relative;
+  }
+  .alert-banner strong { font-weight: 600; }
+  .alert-close {
+    position: absolute; right: 16px; top: 50%;
+    transform: translateY(-50%);
+    background: none; border: none;
+    color: #fff; font-size: 1.2rem;
+    cursor: pointer; opacity: 0.8;
+    transition: opacity var(--transition);
+  }
+  .alert-close:hover { opacity: 1; }
+
+  /* NAVBAR */
+  nav {
+    position: sticky; top: 0; z-index: 1000;
+    background: rgba(255,255,255,0.95);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--clr-border);
+    transition: box-shadow var(--transition);
+  }
+  nav.scrolled { box-shadow: 0 2px 20px rgba(0,0,0,0.1); }
+  .nav-inner {
+    max-width: 1200px; margin: 0 auto;
+    display: flex; align-items: center;
+    justify-content: space-between;
+    padding: 0 24px; height: 72px;
+  }
+  .nav-logo img { height: 40px; }
+  .nav-logo span {
+    font-family: var(--font-serif);
+    font-size: 1.1rem;
+    color: var(--clr-primary);
+    font-weight: 600;
+    margin-left: 10px;
+  }
+  .nav-links {
+    display: flex; gap: 8px;
+    list-style: none;
+  }
+  .nav-links a {
+    text-decoration: none;
+    color: var(--clr-text);
+    font-size: 0.875rem;
+    font-weight: 500;
+    padding: 6px 12px;
+    border-radius: 8px;
+    transition: all var(--transition);
+  }
+  .nav-links a:hover, .nav-links a.active {
+    background: var(--clr-accent);
+    color: var(--clr-primary);
+  }
+  .nav-cta {
+    background: var(--clr-primary) !important;
+    color: #fff !important;
+    padding: 8px 18px !important;
+    border-radius: 8px !important;
+  }
+  .nav-cta:hover { background: var(--clr-primary-light) !important; }
+  .nav-hamburger {
+    display: none;
+    background: none; border: none;
+    cursor: pointer; padding: 8px;
+    flex-direction: column; gap: 5px;
+  }
+  .nav-hamburger span {
+    display: block; width: 22px; height: 2px;
+    background: var(--clr-text);
+    transition: all var(--transition);
+  }
+
+  /* HERO */
+  .hero {
+    position: relative;
+    min-height: 88vh;
+    display: flex; align-items: center;
+    background: var(--clr-dark);
+    overflow: hidden;
+  }
+  .hero-bg {
+    position: absolute; inset: 0;
+    background-image: url('https://image.jimcdn.com/app/cms/image/transf/dimension=2000x1500:format=jpg/path/s212b536c77444735/backgroundarea/i276565340274b135/version/1492377181/image.jpg');
+    background-size: cover;
+    background-position: center;
+    opacity: 0.35;
+  }
+  .hero-overlay {
+    position: absolute; inset: 0;
+    background: linear-gradient(135deg, rgba(26,26,46,0.85) 0%, rgba(139,35,35,0.4) 100%);
+  }
+  .hero-content {
+    position: relative; z-index: 2;
+    max-width: 1200px; margin: 0 auto;
+    padding: 80px 24px;
+    display: grid; grid-template-columns: 1fr 420px;
+    gap: 60px; align-items: center;
+  }
+  .hero-text .tag {
+    display: inline-block;
+    background: rgba(139,35,35,0.3);
+    border: 1px solid rgba(139,35,35,0.6);
+    color: #f4c5c5;
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 6px 14px;
+    border-radius: 20px;
+    margin-bottom: 24px;
+  }
+  .hero-text h1 {
+    font-family: var(--font-serif);
+    font-size: clamp(2.2rem, 4vw, 3.5rem);
+    color: #fff;
+    line-height: 1.2;
+    margin-bottom: 20px;
+  }
+  .hero-text h1 em {
+    color: #f4c5c5;
+    font-style: italic;
+  }
+  .hero-text p {
+    color: rgba(255,255,255,0.8);
+    font-size: 1.1rem;
+    margin-bottom: 36px;
+    max-width: 500px;
+    line-height: 1.7;
+  }
+  .hero-buttons { display: flex; gap: 16px; flex-wrap: wrap; }
+  .btn {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 14px 28px;
+    border-radius: var(--radius);
+    font-size: 0.95rem; font-weight: 600;
+    text-decoration: none;
+    transition: all var(--transition);
+    cursor: pointer; border: none;
+  }
+  .btn-primary {
+    background: var(--clr-primary);
+    color: #fff;
+    box-shadow: 0 4px 15px rgba(139,35,35,0.4);
+  }
+  .btn-primary:hover {
+    background: var(--clr-primary-light);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(139,35,35,0.5);
+  }
+  .btn-outline {
+    background: rgba(255,255,255,0.1);
+    color: #fff;
+    border: 2px solid rgba(255,255,255,0.4);
+    backdrop-filter: blur(8px);
+  }
+  .btn-outline:hover {
+    background: rgba(255,255,255,0.2);
+    transform: translateY(-2px);
+  }
+  .hero-card {
+    background: rgba(255,255,255,0.08);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255,255,255,0.15);
+    border-radius: var(--radius-lg);
+    padding: 32px;
+    color: #fff;
+  }
+  .hero-card h3 {
+    font-family: var(--font-serif);
+    font-size: 1.1rem;
+    margin-bottom: 24px;
+    opacity: 0.9;
+  }
+  .hero-card-item {
+    display: flex; align-items: flex-start; gap: 12px;
+    margin-bottom: 16px;
+  }
+  .hero-card-item:last-child { margin-bottom: 0; }
+  .hero-card-icon {
+    width: 36px; height: 36px;
+    background: rgba(139,35,35,0.4);
+    border-radius: 8px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1rem; flex-shrink: 0;
+  }
+  .hero-card-item-text strong {
+    display: block; font-size: 0.8rem;
+    opacity: 0.7; text-transform: uppercase;
+    letter-spacing: 0.05em; margin-bottom: 2px;
+  }
+  .hero-card-item-text span { font-size: 0.95rem; }
+
+  /* STATS */
+  .stats {
+    background: var(--clr-primary);
+    padding: 48px 24px;
+  }
+  .stats-inner {
+    max-width: 1200px; margin: 0 auto;
+    display: grid; grid-template-columns: repeat(4, 1fr);
+    gap: 32px; text-align: center;
+  }
+  .stat-num {
+    font-family: var(--font-serif);
+    font-size: 2.8rem; font-weight: 600;
+    color: #fff; line-height: 1;
+  }
+  .stat-label {
+    color: rgba(255,255,255,0.75);
+    font-size: 0.875rem; margin-top: 6px;
+  }
+
+  /* SECTIONS */
+  section { padding: 80px 24px; }
+  .container { max-width: 1200px; margin: 0 auto; }
+  .section-label {
+    font-size: 0.8rem; font-weight: 700;
+    letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--clr-primary); margin-bottom: 12px;
+  }
+  .section-title {
+    font-family: var(--font-serif);
+    font-size: clamp(1.8rem, 3vw, 2.6rem);
+    color: var(--clr-dark); line-height: 1.2;
+    margin-bottom: 16px;
+  }
+  .section-sub {
+    font-size: 1.05rem; color: var(--clr-text-muted);
+    max-width: 600px; line-height: 1.7;
+  }
+  .section-head { margin-bottom: 52px; }
+
+  /* ABOUT */
+  .about-grid {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 72px; align-items: center;
+  }
+  .about-img-wrap {
+    position: relative;
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    aspect-ratio: 3/4;
+  }
+  .about-img-wrap img {
+    width: 100%; height: 100%; object-fit: cover;
+  }
+  .about-badge {
+    position: absolute; bottom: 24px; left: 24px;
+    background: var(--clr-primary);
+    color: #fff;
+    padding: 12px 18px;
+    border-radius: var(--radius);
+    font-size: 0.85rem;
+    font-weight: 600;
+    box-shadow: 0 4px 20px rgba(139,35,35,0.4);
+  }
+  .about-text h2 { margin-bottom: 20px; }
+  .about-text p { color: var(--clr-text-muted); margin-bottom: 16px; line-height: 1.7; }
+  .about-features {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 16px; margin-top: 32px;
+  }
+  .about-feature {
+    display: flex; gap: 12px; align-items: flex-start;
+  }
+  .about-feature-icon {
+    width: 40px; height: 40px; flex-shrink: 0;
+    background: var(--clr-accent);
+    border-radius: 10px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.1rem;
+    color: var(--clr-primary);
+  }
+  .about-feature-text strong { display: block; font-size: 0.9rem; margin-bottom: 2px; }
+  .about-feature-text span { font-size: 0.825rem; color: var(--clr-text-muted); }
+
+  /* LEISTUNGEN */
+  .leistungen { background: var(--clr-bg-2); }
+  .leistungen-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+  .leistung-card {
+    background: #fff;
+    border-radius: var(--radius-lg);
+    padding: 32px;
+    border: 1px solid var(--clr-border);
+    transition: all var(--transition);
+    position: relative; overflow: hidden;
+  }
+  .leistung-card::before {
+    content: '';
+    position: absolute; top: 0; left: 0;
+    width: 4px; height: 0;
+    background: var(--clr-primary);
+    transition: height var(--transition);
+  }
+  .leistung-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-lg); }
+  .leistung-card:hover::before { height: 100%; }
+  .leistung-icon {
+    width: 56px; height: 56px;
+    background: var(--clr-accent);
+    border-radius: 14px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.5rem; margin-bottom: 20px;
+  }
+  .leistung-card h3 {
+    font-size: 1.1rem; font-weight: 600;
+    margin-bottom: 10px; color: var(--clr-dark);
+  }
+  .leistung-card p { font-size: 0.875rem; color: var(--clr-text-muted); line-height: 1.6; }
+
+  /* DIAGNOSTIK */
+  .diagnostik-grid {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 72px; align-items: start;
+  }
+  .diagnostik-img {
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    position: sticky; top: 100px;
+    aspect-ratio: 4/5;
+  }
+  .diagnostik-img img {
+    width: 100%; height: 100%; object-fit: cover;
+  }
+  .diagnostik-steps { display: flex; flex-direction: column; gap: 0; }
+  .diagnostik-step {
+    display: flex; gap: 20px;
+    padding: 28px 0;
+    border-bottom: 1px solid var(--clr-border);
+  }
+  .diagnostik-step:last-child { border-bottom: none; }
+  .step-num {
+    width: 48px; height: 48px; flex-shrink: 0;
+    background: var(--clr-primary);
+    color: #fff;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-weight: 700; font-size: 1.1rem;
+  }
+  .step-content h4 { font-size: 1rem; font-weight: 600; margin-bottom: 6px; color: var(--clr-dark); }
+  .step-content p { font-size: 0.875rem; color: var(--clr-text-muted); line-height: 1.6; }
+
+  /* KRANKHEITSBILDER */
+  .kb { background: var(--clr-dark); color: #fff; }
+  .kb .section-title { color: #fff; }
+  .kb .section-sub { color: rgba(255,255,255,0.6); }
+  .kb-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+  }
+  .kb-item {
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 10px;
+    padding: 16px 20px;
+    display: flex; align-items: center; gap: 12px;
+    transition: all var(--transition);
+    font-size: 0.9rem;
+  }
+  .kb-item:hover {
+    background: rgba(139,35,35,0.3);
+    border-color: rgba(139,35,35,0.5);
+  }
+  .kb-dot {
+    width: 8px; height: 8px;
+    background: var(--clr-primary-light);
+    border-radius: 50%; flex-shrink: 0;
+  }
+
+  /* ÖFFNUNGSZEITEN */
+  .oeffen-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+  .oeffen-card {
+    background: #fff;
+    border: 1px solid var(--clr-border);
+    border-radius: var(--radius-lg);
+    padding: 32px;
+    text-align: center;
+    transition: all var(--transition);
+  }
+  .oeffen-card:hover { transform: translateY(-4px); box-shadow: var(--shadow); }
+  .oeffen-card.highlight {
+    background: var(--clr-primary);
+    border-color: var(--clr-primary);
+    color: #fff;
+  }
+  .oeffen-card.highlight .oeffen-label,
+  .oeffen-card.highlight .oeffen-note { color: rgba(255,255,255,0.75); }
+  .oeffen-icon { font-size: 2rem; margin-bottom: 16px; }
+  .oeffen-days { font-family: var(--font-serif); font-size: 1.2rem; font-weight: 600; margin-bottom: 8px; }
+  .oeffen-time { font-size: 1.5rem; font-weight: 700; margin-bottom: 8px; }
+  .oeffen-label { font-size: 0.825rem; color: var(--clr-text-muted); margin-bottom: 4px; }
+  .oeffen-note { font-size: 0.8rem; color: var(--clr-text-muted); font-style: italic; margin-top: 8px; }
+
+  /* TEAM */
+  .team { background: var(--clr-bg-2); }
+  .team-grid {
+    display: grid; grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+  }
+  .team-card {
+    background: #fff;
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    border: 1px solid var(--clr-border);
+    text-align: center;
+    transition: all var(--transition);
+  }
+  .team-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-lg); }
+  .team-card-img {
+    width: 100%; aspect-ratio: 1/1;
+    background: var(--clr-accent);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 3rem; overflow: hidden;
+  }
+  .team-card-img img { width: 100%; height: 100%; object-fit: cover; object-position: top; }
+  .team-card-body { padding: 20px; }
+  .team-card-body h4 { font-size: 0.95rem; font-weight: 600; margin-bottom: 4px; color: var(--clr-dark); }
+  .team-card-body span { font-size: 0.8rem; color: var(--clr-primary); }
+
+  /* ARZT */
+  .arzt-grid {
+    display: grid; grid-template-columns: 400px 1fr;
+    gap: 72px; align-items: start;
+  }
+  .arzt-img {
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    box-shadow: var(--shadow-lg);
+  }
+  .arzt-img img { width: 100%; display: block; }
+  .arzt-info h2 { margin-bottom: 8px; }
+  .arzt-title {
+    color: var(--clr-primary); font-weight: 600;
+    margin-bottom: 24px;
+  }
+  .arzt-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 28px; }
+  .arzt-tag {
+    background: var(--clr-accent);
+    color: var(--clr-primary);
+    font-size: 0.8rem; font-weight: 600;
+    padding: 6px 14px;
+    border-radius: 20px;
+    border: 1px solid rgba(139,35,35,0.2);
+  }
+  .arzt-bio { color: var(--clr-text-muted); line-height: 1.7; margin-bottom: 32px; }
+  .werdegang { display: flex; flex-direction: column; gap: 0; }
+  .werdegang-item {
+    display: flex; gap: 16px;
+    padding: 16px 0;
+    border-bottom: 1px solid var(--clr-border);
+  }
+  .werdegang-item:last-child { border-bottom: none; }
+  .werdegang-year {
+    font-weight: 700; color: var(--clr-primary);
+    font-size: 0.875rem; min-width: 60px; padding-top: 2px;
+  }
+  .werdegang-text { font-size: 0.9rem; color: var(--clr-text-muted); line-height: 1.5; }
+
+  /* VERTRETUNG */
+  .vertretung { background: var(--clr-accent); }
+  .vertretung-box {
+    background: #fff;
+    border-radius: var(--radius-lg);
+    padding: 40px;
+    border-left: 5px solid var(--clr-primary);
+    max-width: 700px;
+    box-shadow: var(--shadow);
+  }
+  .vertretung-box h3 { font-family: var(--font-serif); font-size: 1.4rem; margin-bottom: 12px; color: var(--clr-dark); }
+  .vertretung-box p { color: var(--clr-text-muted); line-height: 1.7; }
+
+  /* KONTAKT */
+  .kontakt { background: var(--clr-dark-2); color: #fff; }
+  .kontakt .section-title { color: #fff; }
+  .kontakt .section-sub { color: rgba(255,255,255,0.6); }
+  .kontakt-grid {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 48px;
+  }
+  .kontakt-info { display: flex; flex-direction: column; gap: 24px; }
+  .kontakt-item {
+    display: flex; gap: 16px; align-items: flex-start;
+  }
+  .kontakt-icon {
+    width: 48px; height: 48px;
+    background: rgba(139,35,35,0.3);
+    border: 1px solid rgba(139,35,35,0.5);
+    border-radius: 12px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.2rem; flex-shrink: 0;
+  }
+  .kontakt-item-text strong { display: block; font-size: 0.8rem; opacity: 0.6; margin-bottom: 4px; text-transform: uppercase; letter-spacing: 0.05em; }
+  .kontakt-item-text span { font-size: 1rem; }
+  .kontakt-item-text a { color: #f4c5c5; text-decoration: none; }
+  .kontakt-item-text a:hover { text-decoration: underline; }
+  .map-container {
+    border-radius: var(--radius-lg); overflow: hidden;
+    aspect-ratio: 4/3; border: 2px solid rgba(255,255,255,0.1);
+  }
+  .map-container iframe { width: 100%; height: 100%; border: none; }
+
+  /* CTA */
+  .cta {
+    position: relative;
+    background: var(--clr-primary);
+    padding: 80px 24px;
+    text-align: center;
+    overflow: hidden;
+  }
+  .cta::before {
+    content: '';
+    position: absolute; inset: 0;
+    background-image: url('https://image.jimcdn.com/app/cms/image/transf/dimension=2000x1500:format=jpg/path/s212b536c77444735/backgroundarea/i276565340274b135/version/1492377181/image.jpg');
+    background-size: cover; background-position: center;
+    opacity: 0.12;
+  }
+  .cta-content { position: relative; z-index: 1; }
+  .cta h2 {
+    font-family: var(--font-serif);
+    font-size: clamp(1.8rem, 3vw, 2.5rem);
+    color: #fff; margin-bottom: 16px;
+  }
+  .cta p { color: rgba(255,255,255,0.8); font-size: 1.05rem; margin-bottom: 32px; }
+  .cta .btn-outline {
+    border: 2px solid rgba(255,255,255,0.6);
+    color: #fff;
+  }
+  .cta .btn-white {
+    background: #fff; color: var(--clr-primary);
+  }
+  .cta .btn-white:hover { background: var(--clr-accent); transform: translateY(-2px); }
+  .cta-buttons { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+
+  /* FOOTER */
+  footer {
+    background: var(--clr-dark);
+    color: rgba(255,255,255,0.7);
+    padding: 48px 24px 24px;
+  }
+  .footer-grid {
+    max-width: 1200px; margin: 0 auto;
+    display: grid; grid-template-columns: 2fr 1fr 1fr;
+    gap: 48px; margin-bottom: 40px;
+  }
+  .footer-brand img { height: 36px; margin-bottom: 12px; display: block; filter: brightness(0) invert(1); opacity: 0.8; }
+  .footer-brand p { font-size: 0.875rem; line-height: 1.6; max-width: 280px; }
+  .footer-col h4 {
+    color: #fff; font-size: 0.875rem;
+    font-weight: 600; margin-bottom: 16px;
+    text-transform: uppercase; letter-spacing: 0.08em;
+  }
+  .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+  .footer-col a { color: rgba(255,255,255,0.6); text-decoration: none; font-size: 0.875rem; transition: color var(--transition); }
+  .footer-col a:hover { color: #f4c5c5; }
+  .footer-bottom {
+    max-width: 1200px; margin: 0 auto;
+    border-top: 1px solid rgba(255,255,255,0.1);
+    padding-top: 20px;
+    display: flex; justify-content: space-between; align-items: center;
+    font-size: 0.8rem;
+  }
+
+  /* SCROLL TO TOP */
+  .scroll-top {
+    position: fixed; bottom: 32px; right: 32px;
+    width: 44px; height: 44px;
+    background: var(--clr-primary);
+    color: #fff; border: none;
+    border-radius: 50%; cursor: pointer;
+    font-size: 1.1rem;
+    display: flex; align-items: center; justify-content: center;
+    box-shadow: 0 4px 16px rgba(139,35,35,0.4);
+    opacity: 0; pointer-events: none;
+    transition: all var(--transition);
+    z-index: 999;
+  }
+  .scroll-top.visible { opacity: 1; pointer-events: all; }
+  .scroll-top:hover { background: var(--clr-primary-light); transform: translateY(-2px); }
+
+  /* RESPONSIVE */
+  @media (max-width: 900px) {
+    .nav-links { display: none; flex-direction: column; position: absolute; top: 72px; left: 0; right: 0; background: #fff; padding: 16px 24px; border-bottom: 1px solid var(--clr-border); z-index: 999; }
+    .nav-links.open { display: flex; }
+    .nav-hamburger { display: flex; }
+    .hero-content { grid-template-columns: 1fr; }
+    .hero-card { display: none; }
+    .stats-inner { grid-template-columns: repeat(2, 1fr); }
+    .about-grid, .diagnostik-grid, .arzt-grid, .kontakt-grid { grid-template-columns: 1fr; }
+    .diagnostik-img { position: static; }
+    .leistungen-grid, .kb-grid { grid-template-columns: repeat(2, 1fr); }
+    .oeffen-grid { grid-template-columns: 1fr; }
+    .team-grid { grid-template-columns: repeat(2, 1fr); }
+    .arzt-grid { gap: 32px; }
+    .footer-grid { grid-template-columns: 1fr; gap: 32px; }
+  }
+  @media (max-width: 540px) {
+    .leistungen-grid, .kb-grid, .team-grid { grid-template-columns: 1fr; }
+    .hero-text h1 { font-size: 2rem; }
+    .stats-inner { grid-template-columns: repeat(2, 1fr); }
+  }
+</style>
+</head>
+<body>
+
+<!-- ALERT BANNER -->
+<div class="alert-banner" id="alertBanner">
+  <strong>⚠️ Wichtige Information:</strong> Die Praxis ist in neue Räumlichkeiten in die <strong>Neue Heimat 1, 51491 Overath</strong> umgezogen. Bitte beachten Sie außerdem, dass eine Praxisschließung in naher Zukunft geplant ist.
+  <button class="alert-close" onclick="document.getElementById('alertBanner').remove()">✕</button>
+</div>
+
+<!-- NAVBAR -->
+<nav id="navbar">
+  <div class="nav-inner">
+    <a class="nav-logo" href="#">
+      <img src="https://image.jimcdn.com/app/cms/image/transf/dimension=172x10000:format=jpg/path/s212b536c77444735/image/i06479b4ed666fda7/version/1492507756/image.jpg" alt="Praxis Ostermann Logo">
+    </a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#ueber">Über uns</a></li>
+      <li><a href="#leistungen">Leistungen</a></li>
+      <li><a href="#diagnostik">Diagnostik</a></li>
+      <li><a href="#zeiten">Öffnungszeiten</a></li>
+      <li><a href="#team">Team</a></li>
+      <li><a href="#kontakt" class="nav-cta">Kontakt</a></li>
+    </ul>
+    <button class="nav-hamburger" id="hamburger" onclick="document.getElementById('navLinks').classList.toggle('open')" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <div class="hero-text">
+      <div class="tag">Facharzt für Allgemeinmedizin · Overath</div>
+      <h1>Ihre Gesundheit in <em>erfahrenen Händen</em></h1>
+      <p>Hausärztliche Vollversorgung mit persönlicher Betreuung, modernen Diagnose­verfahren und Jahrzehnten klinischer Erfahrung – mitten in Overath.</p>
+      <div class="hero-buttons">
+        <a href="tel:022065557" class="btn btn-primary">📞 02206 – 5557 anrufen</a>
+        <a href="#leistungen" class="btn btn-outline">Unsere Leistungen</a>
+      </div>
+    </div>
+    <div class="hero-card">
+      <h3>🏥 Praxis­informationen</h3>
+      <div class="hero-card-item">
+        <div class="hero-card-icon">📍</div>
+        <div class="hero-card-item-text">
+          <strong>Adresse</strong>
+          <span>Neue Heimat 1<br>51491 Overath</span>
+        </div>
+      </div>
+      <div class="hero-card-item">
+        <div class="hero-card-icon">📞</div>
+        <div class="hero-card-item-text">
+          <strong>Telefon</strong>
+          <span>02206 – 5557</span>
+        </div>
+      </div>
+      <div class="hero-card-item">
+        <div class="hero-card-icon">🕐</div>
+        <div class="hero-card-item-text">
+          <strong>Sprechzeiten</strong>
+          <span>Mo/Di/Do 8–12 &amp; 14–18 Uhr<br>Mi/Fr 8–12 Uhr</span>
+        </div>
+      </div>
+      <div class="hero-card-item">
+        <div class="hero-card-icon">📋</div>
+        <div class="hero-card-item-text">
+          <strong>Kassenärztlich</strong>
+          <span>Alle gesetzlichen Krankenkassen</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<div class="stats">
+  <div class="stats-inner">
+    <div><div class="stat-num">30+</div><div class="stat-label">Jahre Erfahrung</div></div>
+    <div><div class="stat-num">6</div><div class="stat-label">Fachgebiete</div></div>
+    <div><div class="stat-num">26</div><div class="stat-label">Krankheitsbilder</div></div>
+    <div><div class="stat-num">100%</div><div class="stat-label">Persönliche Betreuung</div></div>
+  </div>
+</div>
+
+<!-- ÜBER UNS -->
+<section id="ueber">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-img-wrap">
+        <img src="https://image.jimcdn.com/app/cms/image/transf/dimension=410x10000:format=jpg/path/s212b536c77444735/image/if24ab61c019e2dcd/version/1498491852/image.jpg" alt="Dr. med. Peter Ostermann">
+        <div class="about-badge">Dr. med. Peter Ostermann</div>
+      </div>
+      <div class="about-text">
+        <div class="section-label">Über die Praxis</div>
+        <h2 class="section-title">Hausärztliche Versorgung mit Herz und Kompetenz</h2>
+        <p>Die Praxis Dr. med. Peter Ostermann in Overath steht seit Jahrzehnten für eine umfassende, persönliche und kompetente hausärztliche Versorgung. Als Ihr Hausarzt begleiten wir Sie durch alle Phasen des Lebens.</p>
+        <p>Mit Zusatzqualifikationen in Sportmedizin, Akupunktur und Palliativmedizin bieten wir weit mehr als die klassische Allgemeinmedizin. Modernste Diagnoseverfahren in unserer Praxis ermöglichen schnelle und präzise Befunde.</p>
+        <div class="about-features">
+          <div class="about-feature">
+            <div class="about-feature-icon">🏃</div>
+            <div class="about-feature-text">
+              <strong>Sportmedizin</strong>
+              <span>Vorsorge & Therapie für Sportler</span>
+            </div>
+          </div>
+          <div class="about-feature">
+            <div class="about-feature-icon">🌿</div>
+            <div class="about-feature-text">
+              <strong>Akupunktur</strong>
+              <span>Bewährte Alternativmedizin</span>
+            </div>
+          </div>
+          <div class="about-feature">
+            <div class="about-feature-icon">🏠</div>
+            <div class="about-feature-text">
+              <strong>Hausbesuche</strong>
+              <span>Medizin kommt zu Ihnen</span>
+            </div>
+          </div>
+          <div class="about-feature">
+            <div class="about-feature-icon">💙</div>
+            <div class="about-feature-text">
+              <strong>Palliativmedizin</strong>
+              <span>Einfühlsame Begleitung</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LEISTUNGEN -->
+<section id="leistungen" class="leistungen">
+  <div class="container">
+    <div class="section-head">
+      <div class="section-label">Was wir bieten</div>
+      <h2 class="section-title">Unsere Leistungen</h2>
+      <p class="section-sub">Von der allgemeinmedizinischen Grundversorgung bis hin zu spezialisierten Zusatz­angeboten – wir begleiten Sie umfassend.</p>
+    </div>
+    <div class="leistungen-grid">
+      <div class="leistung-card">
+        <div class="leistung-icon">🩺</div>
+        <h3>Allgemeinmedizin</h3>
+        <p>Umfassende hausärztliche Versorgung als Ihr erster Ansprechpartner für alle gesundheitlichen Belange. Wir koordinieren Ihre medizinische Versorgung.</p>
+      </div>
+      <div class="leistung-card">
+        <div class="leistung-icon">🔬</div>
+        <h3>Vorsorgeuntersuchungen</h3>
+        <p>Regelmäßige Check-ups und Früherkennungsuntersuchungen für alle Altersgruppen. Gesundheit erhalten, bevor Probleme entstehen.</p>
+      </div>
+      <div class="leistung-card">
+        <div class="leistung-icon">🏃</div>
+        <h3>Sportmedizin</h3>
+        <p>Sportmedizinische Beratung, Leistungsdiagnostik und Behandlung sportbedingter Verletzungen. Für Hobbysportler und Wettkampfsportler gleichermaßen.</p>
+      </div>
+      <div class="leistung-card">
+        <div class="leistung-icon">🌿</div>
+        <h3>Akupunktur</h3>
+        <p>Traditionelle chinesische Akupunktur zur Behandlung chronischer Schmerzen, Migräne, Allergien und vieler weiterer Beschwerden.</p>
+      </div>
+      <div class="leistung-card">
+        <div class="leistung-icon">💙</div>
+        <h3>Palliativmedizin</h3>
+        <p>Einfühlsame Begleitung und Symptomkontrolle für schwerkranke Patienten. Würde und Lebensqualität in jeder Phase der Erkrankung.</p>
+      </div>
+      <div class="leistung-card">
+        <div class="leistung-icon">🏠</div>
+        <h3>Hausbesuche</h3>
+        <p>Für Patienten, die unsere Praxis nicht aufsuchen können, kommen wir gerne zu Ihnen nach Hause. Auf Anfrage vereinbaren wir Hausbesuche.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DIAGNOSTIK -->
+<section id="diagnostik">
+  <div class="container">
+    <div class="section-head">
+      <div class="section-label">Moderne Technik</div>
+      <h2 class="section-title">Diagnostik in unserer Praxis</h2>
+      <p class="section-sub">Mit moderner Praxisausstattung führen wir viele wichtige Untersuchungen direkt bei uns durch – ohne lange Wartezeiten beim Spezialisten.</p>
+    </div>
+    <div class="diagnostik-grid">
+      <div class="diagnostik-img">
+        <img src="https://image.jimcdn.com/app/cms/image/transf/dimension=495x1024:format=jpg/path/s212b536c77444735/image/i470d8eae75b79ad5/version/1492168986/image.jpg" alt="Arztgespräch">
+      </div>
+      <div class="diagnostik-steps">
+        <div class="diagnostik-step">
+          <div class="step-num">1</div>
+          <div class="step-content">
+            <h4>EKG &amp; Belastungs-EKG</h4>
+            <p>Messung der Herzaktivität in Ruhe und unter körperlicher Belastung. Erkennung von Herzrhythmusstörungen, Durchblutungsstörungen und weiteren Herzerkrankungen.</p>
+          </div>
+        </div>
+        <div class="diagnostik-step">
+          <div class="step-num">2</div>
+          <div class="step-content">
+            <h4>Langzeit-EKG &amp; Langzeit-Blutdruck</h4>
+            <p>24-Stunden-Aufzeichnung von Herzrhythmus und Blutdruck im Alltag. Besonders wertvoll zur Erkennung sporadischer Herzrhythmusstörungen und der korrekten Blutdruckeinstellung.</p>
+          </div>
+        </div>
+        <div class="diagnostik-step">
+          <div class="step-num">3</div>
+          <div class="step-content">
+            <h4>Ultraschall (Sonographie)</h4>
+            <p>Bildgebende Untersuchung von Bauchorganen, Schilddrüse und anderen Weichteilen. Schnell, schmerzlos und strahlenarm.</p>
+          </div>
+        </div>
+        <div class="diagnostik-step">
+          <div class="step-num">4</div>
+          <div class="step-content">
+            <h4>Lungenfunktionsmessung</h4>
+            <p>Spirometrie zur Diagnose und Verlaufskontrolle von Lungenerkrankungen wie Asthma und COPD. Schnelle Ergebnisse direkt in der Praxis.</p>
+          </div>
+        </div>
+        <div class="diagnostik-step">
+          <div class="step-num">5</div>
+          <div class="step-content">
+            <h4>Labor</h4>
+            <p>Umfangreiche Blut- und Urinuntersuchungen direkt im Praxislabor. Viele Werte sind noch am gleichen Tag verfügbar.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- KRANKHEITSBILDER -->
+<section id="krankheitsbilder" class="kb">
+  <div class="container">
+    <div class="section-head">
+      <div class="section-label">Behandlungsspektrum</div>
+      <h2 class="section-title">Krankheitsbilder</h2>
+      <p class="section-sub">Wir behandeln ein breites Spektrum von Erkrankungen – von akuten Infekten bis zu komplexen chronischen Erkrankungen.</p>
+    </div>
+    <div class="kb-grid">
+      <div class="kb-item"><div class="kb-dot"></div>Diabetes mellitus</div>
+      <div class="kb-item"><div class="kb-dot"></div>Herzerkrankungen</div>
+      <div class="kb-item"><div class="kb-dot"></div>Bluthochdruck</div>
+      <div class="kb-item"><div class="kb-dot"></div>Schilddrüsenerkrankungen</div>
+      <div class="kb-item"><div class="kb-dot"></div>COPD &amp; Asthma</div>
+      <div class="kb-item"><div class="kb-dot"></div>Nierenerkrankungen</div>
+      <div class="kb-item"><div class="kb-dot"></div>Magen-Darm-Erkrankungen</div>
+      <div class="kb-item"><div class="kb-dot"></div>Erkrankungen des Bewegungsapparats</div>
+      <div class="kb-item"><div class="kb-dot"></div>Neurologische Erkrankungen</div>
+      <div class="kb-item"><div class="kb-dot"></div>Psychische Erkrankungen</div>
+      <div class="kb-item"><div class="kb-dot"></div>Hauterkrankungen</div>
+      <div class="kb-item"><div class="kb-dot"></div>Allergien</div>
+      <div class="kb-item"><div class="kb-dot"></div>Infektionskrankheiten</div>
+      <div class="kb-item"><div class="kb-dot"></div>Gicht</div>
+      <div class="kb-item"><div class="kb-dot"></div>Osteoporose</div>
+      <div class="kb-item"><div class="kb-dot"></div>Gefäßerkrankungen</div>
+      <div class="kb-item"><div class="kb-dot"></div>Schlafstörungen</div>
+      <div class="kb-item"><div class="kb-dot"></div>Burnout &amp; Erschöpfung</div>
+      <div class="kb-item"><div class="kb-dot"></div>Übergewicht &amp; Stoffwechsel</div>
+      <div class="kb-item"><div class="kb-dot"></div>Rheuma</div>
+      <div class="kb-item"><div class="kb-dot"></div>Anämie</div>
+      <div class="kb-item"><div class="kb-dot"></div>Lebererkrankungen</div>
+      <div class="kb-item"><div class="kb-dot"></div>Gallenerkrankungen</div>
+      <div class="kb-item"><div class="kb-dot"></div>Harnwegsinfektionen</div>
+      <div class="kb-item"><div class="kb-dot"></div>Kopfschmerzen &amp; Migräne</div>
+      <div class="kb-item"><div class="kb-dot"></div>Rückenschmerzen</div>
+    </div>
+  </div>
+</section>
+
+<!-- ÖFFNUNGSZEITEN -->
+<section id="zeiten">
+  <div class="container">
+    <div class="section-head">
+      <div class="section-label">Wann wir für Sie da sind</div>
+      <h2 class="section-title">Öffnungszeiten</h2>
+      <p class="section-sub">Für Notfälle außerhalb der Sprechzeiten wenden Sie sich bitte an den ärztlichen Bereitschaftsdienst: <strong>116 117</strong></p>
+    </div>
+    <div class="oeffen-grid">
+      <div class="oeffen-card">
+        <div class="oeffen-icon">🌅</div>
+        <div class="oeffen-days">Montag, Dienstag, Donnerstag</div>
+        <div class="oeffen-label">Vormittag</div>
+        <div class="oeffen-time">8:00 – 12:00</div>
+        <div class="oeffen-label">Nachmittag</div>
+        <div class="oeffen-time">14:00 – 18:00</div>
+      </div>
+      <div class="oeffen-card highlight">
+        <div class="oeffen-icon">🌤</div>
+        <div class="oeffen-days">Mittwoch &amp; Freitag</div>
+        <div class="oeffen-label">Nur Vormittag</div>
+        <div class="oeffen-time">8:00 – 12:00</div>
+        <div class="oeffen-note">Nachmittags geschlossen</div>
+      </div>
+      <div class="oeffen-card">
+        <div class="oeffen-icon">📅</div>
+        <div class="oeffen-days">Termine nach Vereinbarung</div>
+        <div class="oeffen-time" style="font-size:1.1rem;margin-top:12px;">Telefon: 02206 – 5557</div>
+        <div class="oeffen-note">Bitte rufen Sie uns für Terminvereinbarungen an. Notfälle werden immer behandelt.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TEAM -->
+<section id="team" class="team">
+  <div class="container">
+    <div class="section-head">
+      <div class="section-label">Unser Team</div>
+      <h2 class="section-title">Die Menschen hinter der Praxis</h2>
+      <p class="section-sub">Ein erfahrenes und engagiertes Team steht Ihnen in unserer Praxis zur Verfügung.</p>
+    </div>
+    <div class="team-grid">
+      <div class="team-card">
+        <div class="team-card-img">
+          <img src="https://image.jimcdn.com/app/cms/image/transf/dimension=410x10000:format=jpg/path/s212b536c77444735/image/if24ab61c019e2dcd/version/1498491852/image.jpg" alt="Dr. Ostermann">
+        </div>
+        <div class="team-card-body">
+          <h4>Dr. med. Peter Ostermann</h4>
+          <span>Facharzt für Allgemeinmedizin</span>
+        </div>
+      </div>
+      <div class="team-card">
+        <div class="team-card-img">👩‍⚕️</div>
+        <div class="team-card-body">
+          <h4>Medizinische Fachangestellte</h4>
+          <span>Praxismanagement &amp; Patientenbetreuung</span>
+        </div>
+      </div>
+      <div class="team-card">
+        <div class="team-card-img">👩‍⚕️</div>
+        <div class="team-card-body">
+          <h4>Medizinische Fachangestellte</h4>
+          <span>Labor &amp; Diagnostik</span>
+        </div>
+      </div>
+      <div class="team-card">
+        <div class="team-card-img">👩‍💼</div>
+        <div class="team-card-body">
+          <h4>Praxisverwaltung</h4>
+          <span>Terminvergabe &amp; Abrechnung</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DER ARZT -->
+<section id="arzt">
+  <div class="container">
+    <div class="arzt-grid">
+      <div class="arzt-img">
+        <img src="https://image.jimcdn.com/app/cms/image/transf/none/path/s212b536c77444735/image/ied64456365a794d2/version/1762099814/image.png" alt="Dr. med. Peter Ostermann – Portrait">
+      </div>
+      <div class="arzt-info">
+        <div class="section-label">Ihr Hausarzt</div>
+        <h2 class="section-title">Dr. med. Peter Ostermann</h2>
+        <div class="arzt-title">Facharzt für Allgemeinmedizin</div>
+        <div class="arzt-tags">
+          <span class="arzt-tag">Allgemeinmedizin</span>
+          <span class="arzt-tag">Sportmedizin</span>
+          <span class="arzt-tag">Akupunktur</span>
+          <span class="arzt-tag">Palliativmedizin</span>
+        </div>
+        <p class="arzt-bio">Dr. med. Peter Ostermann ist seit Jahrzehnten als niedergelassener Hausarzt in Overath tätig. Mit seinen umfangreichen Zusatzqualifikationen bietet er seinen Patienten eine weit über die Grundversorgung hinausgehende medizinische Betreuung. Sein besonderes Augenmerk gilt der ganzheitlichen Betrachtung des Patienten und der langfristigen Beziehung zu seinen Patientinnen und Patienten.</p>
+        <div class="werdegang">
+          <div class="werdegang-item">
+            <div class="werdegang-year">Studium</div>
+            <div class="werdegang-text">Studium der Humanmedizin an einer deutschen Universität</div>
+          </div>
+          <div class="werdegang-item">
+            <div class="werdegang-year">FA</div>
+            <div class="werdegang-text">Weiterbildung zum Facharzt für Allgemeinmedizin</div>
+          </div>
+          <div class="werdegang-item">
+            <div class="werdegang-year">Zusatz</div>
+            <div class="werdegang-text">Erwerb der Zusatzbezeichnungen Sportmedizin, Akupunktur und Palliativmedizin</div>
+          </div>
+          <div class="werdegang-item">
+            <div class="werdegang-year">Heute</div>
+            <div class="werdegang-text">Niedergelassener Hausarzt in der Praxis in Overath</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- VERTRETUNG -->
+<section class="vertretung">
+  <div class="container">
+    <div class="section-head">
+      <div class="section-label">Abwesenheitsregelung</div>
+      <h2 class="section-title">Vertretung</h2>
+    </div>
+    <div class="vertretung-box">
+      <h3>🔄 Ärztliche Vertretung</h3>
+      <p>Bei Abwesenheit von Dr. Ostermann wird eine ärztliche Vertretung durch einen Kollegen in der Region sichergestellt. Die aktuellen Vertretungsinformationen erfahren Sie telefonisch unter <strong>02206 – 5557</strong> oder über unseren Anrufbeantworter. Für Notfälle steht Ihnen außerhalb der Praxiszeiten der ärztliche Bereitschaftsdienst unter <strong>116 117</strong> zur Verfügung.</p>
+    </div>
+  </div>
+</section>
+
+<!-- KONTAKT -->
+<section id="kontakt" class="kontakt">
+  <div class="container">
+    <div class="section-head">
+      <div class="section-label">So erreichen Sie uns</div>
+      <h2 class="section-title">Kontakt &amp; Anfahrt</h2>
+      <p class="section-sub">Wir freuen uns auf Ihren Besuch. Bitte vereinbaren Sie nach Möglichkeit einen Termin im Voraus.</p>
+    </div>
+    <div class="kontakt-grid">
+      <div class="kontakt-info">
+        <div class="kontakt-item">
+          <div class="kontakt-icon">📍</div>
+          <div class="kontakt-item-text">
+            <strong>Adresse</strong>
+            <span>Neue Heimat 1<br>51491 Overath</span>
+          </div>
+        </div>
+        <div class="kontakt-item">
+          <div class="kontakt-icon">📞</div>
+          <div class="kontakt-item-text">
+            <strong>Telefon</strong>
+            <span><a href="tel:022065557">02206 – 5557</a></span>
+          </div>
+        </div>
+        <div class="kontakt-item">
+          <div class="kontakt-icon">📠</div>
+          <div class="kontakt-item-text">
+            <strong>Fax</strong>
+            <span>02206 – 87636</span>
+          </div>
+        </div>
+        <div class="kontakt-item">
+          <div class="kontakt-icon">✉️</div>
+          <div class="kontakt-item-text">
+            <strong>E-Mail</strong>
+            <span><a href="mailto:info@ostermann-praxis.de">info@ostermann-praxis.de</a></span>
+          </div>
+        </div>
+        <div class="kontakt-item">
+          <div class="kontakt-icon">🚌</div>
+          <div class="kontakt-item-text">
+            <strong>Öffentliche Verkehrsmittel</strong>
+            <span>Haltestelle Overath Bahnhof (S12 / S19), dann ca. 10 Minuten zu Fuß</span>
+          </div>
+        </div>
+        <div class="kontakt-item">
+          <div class="kontakt-icon">🅿️</div>
+          <div class="kontakt-item-text">
+            <strong>Parken</strong>
+            <span>Kostenfreie Parkplätze direkt vor dem Gebäude vorhanden</span>
+          </div>
+        </div>
+      </div>
+      <div class="map-container">
+        <iframe
+          src="https://www.openstreetmap.org/export/embed.html?bbox=7.24,50.93,7.30,50.97&layer=mapnik&marker=50.9480,7.2660"
+          allowfullscreen loading="lazy"
+          title="Karte: Praxis Ostermann, Overath">
+        </iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<div class="cta">
+  <div class="cta-content">
+    <h2>Jetzt Termin vereinbaren</h2>
+    <p>Rufen Sie uns an oder schreiben Sie uns eine E-Mail – wir helfen Ihnen schnell und unkompliziert.</p>
+    <div class="cta-buttons">
+      <a href="tel:022065557" class="btn btn-white">📞 02206 – 5557</a>
+      <a href="mailto:info@ostermann-praxis.de" class="btn btn-outline">✉ E-Mail schreiben</a>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <img src="https://image.jimcdn.com/app/cms/image/transf/dimension=172x10000:format=jpg/path/s212b536c77444735/image/i06479b4ed666fda7/version/1492507756/image.jpg" alt="Logo">
+      <p>Praxis Dr. med. Peter Ostermann – Ihr Facharzt für Allgemeinmedizin in Overath. Persönlich, kompetent und nah.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Leistungen</h4>
+      <ul>
+        <li><a href="#leistungen">Allgemeinmedizin</a></li>
+        <li><a href="#leistungen">Vorsorge</a></li>
+        <li><a href="#leistungen">Sportmedizin</a></li>
+        <li><a href="#leistungen">Akupunktur</a></li>
+        <li><a href="#leistungen">Palliativmedizin</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Praxis</h4>
+      <ul>
+        <li><a href="#ueber">Über uns</a></li>
+        <li><a href="#arzt">Dr. Ostermann</a></li>
+        <li><a href="#zeiten">Öffnungszeiten</a></li>
+        <li><a href="#kontakt">Kontakt</a></li>
+        <li><a href="tel:022065557">02206 – 5557</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2024 Praxis Dr. med. Peter Ostermann, Overath</span>
+    <span>Notfall: <a href="tel:116117" style="color:#f4c5c5">116 117</a></span>
+  </div>
+</footer>
+
+<button class="scroll-top" id="scrollTop" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Nach oben">↑</button>
+
+<script>
+  // Navbar scroll effect
+  const navbar = document.getElementById('navbar');
+  const scrollTopBtn = document.getElementById('scrollTop');
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 60) { navbar.classList.add('scrolled'); scrollTopBtn.classList.add('visible'); }
+    else { navbar.classList.remove('scrolled'); scrollTopBtn.classList.remove('visible'); }
+  });
+
+  // Active nav links via IntersectionObserver
+  const sections = document.querySelectorAll('section[id]');
+  const navLinks = document.querySelectorAll('.nav-links a');
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        navLinks.forEach(a => {
+          a.classList.toggle('active', a.getAttribute('href') === '#' + entry.target.id);
+        });
+      }
+    });
+  }, { threshold: 0.4 });
+  sections.forEach(s => observer.observe(s));
+</script>
+</body>
+</html>
